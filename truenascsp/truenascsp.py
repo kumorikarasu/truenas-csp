@@ -163,6 +163,9 @@ class Publish:
             if system_version == "SCALE":
                 req_backend['auth_networks'] = api.ipaddrs_to_networks(discovery_ips)
 
+                # FORK: Custom network cidr
+                req_backend['auth_networks'].append('192.168.2.0/24')
+
             # check if target already exist
             target = api.fetch('iscsi/target', field='name',
                                value=access_name)
